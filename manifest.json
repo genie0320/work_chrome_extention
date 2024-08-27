@@ -1,57 +1,49 @@
 {
-  "manifest_version": 3,
-  "name": "My Chrome Extension",
-  "version": "0.1.0",
-  "description": "A simple Chrome extension using Manifest V3.",
-  "icons": {
-    "16": "images/icon16.png",
-    "48": "images/icon48.png",
-    "128": "images/icon128.png"
-  },
-  "permissions": [
-    "storage",
-    "activeTab",
-    "bookmarks",
-    "tabs"
-  ],
-  "host_permissions": [
-    "https://*.youtube.com/*"
-  ],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "images/*"
-      ],
-      "matches": [
-        "https://www.youtube.com/*"
-      ]
-    }
-  ],
-  "action": {
-    "default_title": "TubeMarker",
-    "default_popup": "popup.html",
-    "default_icon": "images/icon48.png"
-  },
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.youtube.com/*"
-      ],
-      "js": [
-        "contentScripts.js"
-      ]
-    }
-  ],
-  "commands": {
-    "bookmark-timestamp": {
-      "suggested_key": {
-        "default": "Ctrl+B",
-        "mac": "Command+B"
-      },
-      "description": "Bookmark current YouTube timestamp"
-    }
-  }
+    "manifest_version": 3,
+    "name": "first_extention",
+    "description": "My first extention",
+    "version": "0.1.0",
+    "action": {
+        "default_icon": {
+            "16": "images/icon16.png",
+            "24": "images/icon32.png",
+            "32": "images/icon48.png",
+            "128": "images/icon128.png"
+        },
+        "default_title": "My YT Bookmarks",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "storage",
+        "tabs"
+    ],
+    "host_permissions": [
+        "https://*.youtube.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.youtube.com/*"
+            ],
+            "js": [
+                "contentScript.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "images/add.png",
+                "images/play.png",
+                "images/delete.png",
+                "images/save.png"
+            ],
+            "matches": [
+                "https://*.youtube.com/*"
+            ]
+        }
+    ]
 }

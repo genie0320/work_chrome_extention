@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "TubeMarker",
+  "version": "0.1.0",
+  "description": "A simple Chrome extension using Manifest V3.",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://*.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "action": {
+    "default_title": "TubeMarker",
+    "default_popup": "pages/popup.html",
+    "default_icon": "images/icon48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.youtube.com/*"
+      ],
+      "js": [
+        "scripts/contentScripts.js"
+      ]
+    }
+  ],
+  "commands": {
+    "bookmark-timestamp": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      },
+      "description": "Bookmark current YouTube timestamp"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/*"
+      ],
+      "matches": [
+        "https://*.youtube.com/*"
+      ]
+    }
+  ]
+}
